@@ -1,0 +1,43 @@
+2019-08-22 02:00:21,139:WARNING: From /home/lucas/anaconda3/envs/gym/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2019-08-22 02:00:21,245:WARNING: From /home/lucas/anaconda3/envs/gym/lib/python3.7/site-packages/tensorflow/python/ops/clip_ops.py:157: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+2019-08-22 02:00:21,308:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:100: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2019-08-22 02:00:21,346:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:121: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2019-08-22 02:00:21,355:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:132: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+2019-08-22 02:00:21,375:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:147: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+2019-08-22 02:00:21,378:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:148: The name tf.summary.FileWriter is deprecated. Please use tf.compat.v1.summary.FileWriter instead.
+
+2019-08-22 02:00:21,411:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:106: The name tf.global_variables_initializer is deprecated. Please use tf.compat.v1.global_variables_initializer instead.
+
+2019-08-22 02:00:21,468:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:113: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+2019-08-22 02:00:21,490:INFO: Evaluating...
+2019-08-22 02:00:21,574:INFO: Average reward: -0.60 +/- 0.00
+2019-08-22 02:00:22,697:INFO: Evaluating...
+2019-08-22 02:00:22,742:INFO: Average reward: 3.80 +/- 0.00
+2019-08-22 02:00:23,775:INFO: Evaluating...
+2019-08-22 02:00:23,813:INFO: Average reward: 3.80 +/- 0.00
+2019-08-22 02:00:24,934:INFO: Evaluating...
+2019-08-22 02:00:24,984:INFO: Average reward: 3.80 +/- 0.00
+2019-08-22 02:00:26,014:INFO: Evaluating...
+2019-08-22 02:00:26,050:INFO: Average reward: 4.10 +/- 0.00
+2019-08-22 02:00:27,103:INFO: Evaluating...
+2019-08-22 02:00:27,139:INFO: Average reward: 4.00 +/- 0.00
+2019-08-22 02:00:28,100:INFO: Evaluating...
+2019-08-22 02:00:28,141:INFO: Average reward: 4.10 +/- 0.00
+2019-08-22 02:00:29,134:INFO: Evaluating...
+2019-08-22 02:00:29,169:INFO: Average reward: 4.10 +/- 0.00
+2019-08-22 02:00:30,172:INFO: Evaluating...
+2019-08-22 02:00:30,223:INFO: Average reward: 4.10 +/- 0.00
+2019-08-22 02:00:31,325:INFO: Evaluating...
+2019-08-22 02:00:31,357:INFO: Average reward: 4.10 +/- 0.00
+2019-08-22 02:00:32,317:INFO: - Training done.
+2019-08-22 02:00:32,346:INFO: Evaluating...
+2019-08-22 02:00:32,388:INFO: Average reward: 4.10 +/- 0.00
