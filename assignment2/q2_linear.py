@@ -233,10 +233,18 @@ class Linear(DQN):
 
         optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr)
         grad_var_list = optimizer.compute_gradients(self.loss, var_list = tf.compat.v1.trainable_variables(scope))
+        vars_list = [v for g,v in grad_var_list]
+        grad_list = [g for g,v in grad_var_list]
+
         if self.config.grad_clip:
-            grad_var_list = [(tf.clip_by_norm(g, self.config.clip_val), v) for g,v in grad_var_list]
+            # grad_var_list = [(tf.clip_by_norm(g, self.config.clip_val), v) for g,v in grad_var_list]
+            grads_clipped, global_norm = tf.clip_by_global_norm(grad_list, self.config.clip_val)
+            grad_var_list = list(zip(grads_clipped, vars_list))
+            # self.grad_norm = global_norm
+        
+        self.grad_norm = tf.linalg.global_norm([g for g,v in grad_var_list])
         self.train_op = optimizer.apply_gradients(grad_var_list)
-        self.grad_norm = tf.linalg.global_norm([g for g,v in grad_var_list if g is not None])
+         
         ##############################################################
         ######################## END YOUR CODE #######################
     
