@@ -1,0 +1,6 @@
+gym==0.14.0
+gym[atari]
+matplotlib==3.1.1
+numpy==1.17.0
+six==1.12.0
+tensorflow-gpu==1.14.0

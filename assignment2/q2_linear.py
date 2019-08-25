@@ -96,8 +96,10 @@ class Linear(DQN):
         ################ YOUR CODE HERE - 2-3 lines ################## 
         
         with tf.compat.v1.variable_scope(scope, reuse = reuse):
-            flat_state = tf.keras.layers.Flatten(data_format = 'channels_last')(state)
-            out = tf.keras.layers.Dense(units = num_actions)(flat_state)
+            flat_state = tf.layers.flatten(state, data_format = 'channels_last')
+            out = tf.layers.dense(flat_state, units = num_actions)
+            # flat_state = tf.keras.layers.Flatten(data_format = 'channels_last')(state)
+            # out = tf.keras.layers.Dense(units = num_actions)(flat_state)
 
         ##############################################################
         ######################## END YOUR CODE #######################
@@ -143,7 +145,12 @@ class Linear(DQN):
         
         q_vars = tf.compat.v1.trainable_variables(q_scope)
         target_vars = tf.compat.v1.trainable_variables(target_q_scope)
-        update_ops = [tf.compat.v1.assign(t_var, q_var) for (t_var, q_var) in zip(target_vars, q_vars)]
+        update_ops = []
+        relative_name = lambda name : name[name.find('/')+1:]
+        for (t_var, q_var) in zip(target_vars, q_vars):
+            assert relative_name(t_var.name) ==  relative_name(q_var.name)
+            update_ops.append(tf.compat.v1.assign(t_var, q_var))
+            
         self.update_target_op = tf.group(*update_ops)
 
         ##############################################################
@@ -224,7 +231,7 @@ class Linear(DQN):
         ##############################################################
         #################### YOUR CODE HERE - 8-12 lines #############
 
-        optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=0.001)
+        optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr)
         grad_var_list = optimizer.compute_gradients(self.loss, var_list = tf.compat.v1.trainable_variables(scope))
         if self.config.grad_clip:
             grad_var_list = [(tf.clip_by_norm(g, self.config.clip_val), v) for g,v in grad_var_list]
