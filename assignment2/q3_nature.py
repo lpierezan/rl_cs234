@@ -57,7 +57,15 @@ class NatureQN(Linear):
         input_shape = state.shape[1:]
         df = 'channels_last'
         with tf.compat.v1.variable_scope(scope, reuse = reuse):
-            conv1 = tf.keras.layers.Conv2D(32, 8, strides = 4, data_format = df,
+            out = state
+            out = tf.layers.conv2d(out, 32, 8, 4, activation = 'relu')
+            out = tf.layers.conv2d(out, 64, 4, 2, activation = 'relu')
+            out = tf.layers.conv2d(out, 64, 3, 1, activation = 'relu')
+            out = tf.layers.flatten(out)
+            out = tf.layers.dense(out, 512, activation = 'relu')
+            out = tf.layers.dense(out, num_actions)
+            
+            """conv1 = tf.keras.layers.Conv2D(32, 8, strides = 4, data_format = df,
                 activation = 'relu', input_shape = input_shape)
             conv2 = tf.keras.layers.Conv2D(64, 4, strides = 2, data_format = df, 
                 activation = 'relu')
@@ -69,7 +77,7 @@ class NatureQN(Linear):
 
             out = state
             for layer in [conv1, conv2, conv3, flatten, dense, out_layer]:
-                out = layer(out)
+                out = layer(out)"""
 
         ##############################################################
         ######################## END YOUR CODE #######################
