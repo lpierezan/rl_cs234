@@ -56,7 +56,7 @@ class NatureQN(Linear):
         ################ YOUR CODE HERE - 10-15 lines ################ 
         input_shape = state.shape[1:]
         df = 'channels_last'
-        with tf.compat.v1.variable_scope(scope, reuse = reuse):
+        with tf.variable_scope(scope, reuse = reuse):
             out = state
             out = tf.layers.conv2d(out, 32, 8, 4, activation = 'relu')
             out = tf.layers.conv2d(out, 64, 4, 2, activation = 'relu')

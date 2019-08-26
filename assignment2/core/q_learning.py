@@ -25,6 +25,10 @@ class QN(object):
             config: class with hyperparameters
             logger: logger instance from logging module
         """
+        # my flag to control whether to use original code
+        # or modified with respect to schedule update
+        self.original_schedule = False
+
         # directory for training outputs
         if not os.path.exists(config.output_path):
             os.makedirs(config.output_path)
@@ -171,8 +175,9 @@ class QN(object):
             while True:
                 t += 1
                 # FIX : Update exp and lr schedule after each step
-                exp_schedule.update(t)
-                lr_schedule.update(t)
+                if not self.original_schedule:
+                    exp_schedule.update(t)
+                    lr_schedule.update(t)
 
                 last_eval += 1
                 last_record += 1
@@ -204,8 +209,9 @@ class QN(object):
                    (t % self.config.learning_freq == 0)):
                     
                     # BUG FIX: why only update schedules according to log_freq?
-                    # exp_schedule.update(t)
-                    # lr_schedule.update(t)
+                    if self.original_schedule:
+                        exp_schedule.update(t)
+                        lr_schedule.update(t)
 
                     self.update_averages(rewards, max_q_values, q_values, scores_eval)
                     

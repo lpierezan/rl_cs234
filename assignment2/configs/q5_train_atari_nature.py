@@ -23,7 +23,11 @@ class config():
     eval_freq         = 250000
     record_freq       = 250000
     soft_epsilon      = 0.05
-
+    
+    # my flag to control whether to use original code
+    # or modified with respect to schedule update
+    original_schedule = False
+    
     # nature paper hyper params
     nsteps_train       = 5000000
     batch_size         = 32

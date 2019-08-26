@@ -52,12 +52,12 @@ class Linear(DQN):
         bs = None
         state_tensor_shape = [bs, *state_shape]
         state_tensor_shape[-1] *= self.config.state_history
-        self.s = tf.compat.v1.placeholder(tf.uint8, state_tensor_shape)        
-        self.a = tf.compat.v1.placeholder(tf.int32, [bs])
-        self.r = tf.compat.v1.placeholder(tf.float32, [bs])
-        self.sp = tf.compat.v1.placeholder(tf.uint8, state_tensor_shape)
-        self.done_mask = tf.compat.v1.placeholder(tf.bool, [bs])
-        self.lr = tf.compat.v1.placeholder(tf.float32)
+        self.s = tf.placeholder(tf.uint8, state_tensor_shape)        
+        self.a = tf.placeholder(tf.int32, [bs])
+        self.r = tf.placeholder(tf.float32, [bs])
+        self.sp = tf.placeholder(tf.uint8, state_tensor_shape)
+        self.done_mask = tf.placeholder(tf.bool, [bs])
+        self.lr = tf.placeholder(tf.float32)
 
         ##############################################################
         ######################## END YOUR CODE #######################
@@ -95,7 +95,7 @@ class Linear(DQN):
         ##############################################################
         ################ YOUR CODE HERE - 2-3 lines ################## 
         
-        with tf.compat.v1.variable_scope(scope, reuse = reuse):
+        with tf.variable_scope(scope, reuse = reuse):
             flat_state = tf.layers.flatten(state, data_format = 'channels_last')
             out = tf.layers.dense(flat_state, units = num_actions)
             # flat_state = tf.keras.layers.Flatten(data_format = 'channels_last')(state)
@@ -143,13 +143,13 @@ class Linear(DQN):
         ##############################################################
         ################### YOUR CODE HERE - 5-10 lines #############
         
-        q_vars = tf.compat.v1.trainable_variables(q_scope)
-        target_vars = tf.compat.v1.trainable_variables(target_q_scope)
+        q_vars = tf.trainable_variables(q_scope)
+        target_vars = tf.trainable_variables(target_q_scope)
         update_ops = []
         relative_name = lambda name : name[name.find('/')+1:]
         for (t_var, q_var) in zip(target_vars, q_vars):
             assert relative_name(t_var.name) ==  relative_name(q_var.name)
-            update_ops.append(tf.compat.v1.assign(t_var, q_var))
+            update_ops.append(tf.assign(t_var, q_var))
             
         self.update_target_op = tf.group(*update_ops)
 
@@ -231,8 +231,8 @@ class Linear(DQN):
         ##############################################################
         #################### YOUR CODE HERE - 8-12 lines #############
 
-        optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=self.lr)
-        grad_var_list = optimizer.compute_gradients(self.loss, var_list = tf.compat.v1.trainable_variables(scope))
+        optimizer = tf.train.AdamOptimizer(learning_rate=self.lr)
+        grad_var_list = optimizer.compute_gradients(self.loss, var_list = tf.trainable_variables(scope))
         vars_list = [v for g,v in grad_var_list]
         grad_list = [g for g,v in grad_var_list]
 
