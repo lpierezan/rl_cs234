@@ -58,11 +58,16 @@ class NatureQN(Linear):
         df = 'channels_last'
         with tf.variable_scope(scope, reuse = reuse):
             out = state
-            out = tf.layers.conv2d(out, 32, 8, 4, activation = 'relu')
-            out = tf.layers.conv2d(out, 64, 4, 2, activation = 'relu')
-            out = tf.layers.conv2d(out, 64, 3, 1, activation = 'relu')
+            c1,c2,c3,d1 = 32, 64, 64, 512            
+            if hasattr(self.config, 'layers_sizes'):
+                c1,c2,c3,d1 = self.config.layers_sizes
+            self.logger.info('layers sizes: {}'.format((c1,c2,c3,d1)))
+
+            out = tf.layers.conv2d(out, c1, 8, 4, activation = 'relu')
+            out = tf.layers.conv2d(out, c2, 4, 2, activation = 'relu')
+            out = tf.layers.conv2d(out, c3, 3, 1, activation = 'relu')
             out = tf.layers.flatten(out)
-            out = tf.layers.dense(out, 512, activation = 'relu')
+            out = tf.layers.dense(out, d1, activation = 'relu')
             out = tf.layers.dense(out, num_actions)
             
             """conv1 = tf.keras.layers.Conv2D(32, 8, strides = 4, data_format = df,

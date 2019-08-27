@@ -27,6 +27,10 @@ class config():
     # my flag to control whether to use original code
     # or modified with respect to schedule update
     original_schedule = False
+
+    # customizing conv/dense outputs
+    layers_sizes = [32,64,64,512]
+    
     
     # nature paper hyper params
     nsteps_train       = 5000000

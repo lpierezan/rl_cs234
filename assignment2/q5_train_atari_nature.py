@@ -41,6 +41,6 @@ if __name__ == '__main__':
     # train model
     model = NatureQN(env, config)
     model.original_schedule = config.original_schedule
-    print('original schedule:', model.original_schedule)
+    model.logger.info('original schedule: {}'.format(model.original_schedule))
     
     model.run(exp_schedule, lr_schedule)
