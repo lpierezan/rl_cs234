@@ -1,49 +1,55 @@
-2019-08-24 22:57:33,202:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:99: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+2019-08-27 22:14:44,373:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:55: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2019-08-27 22:14:44,382:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:98: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+2019-08-27 22:14:44,383:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:99: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use keras.layers.flatten instead.
-2019-08-24 22:57:33,395:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:100: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+2019-08-27 22:14:44,586:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:100: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use keras.layers.dense instead.
-2019-08-24 22:57:33,397:WARNING: From /home/lucas/anaconda3/envs/gym/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+2019-08-27 22:14:44,588:WARNING: From /home/lucas/anaconda3/envs/gym/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
 Instructions for updating:
 Call initializer instance with the dtype argument instead of passing it to the constructor
-2019-08-24 22:57:33,726:WARNING: From /home/lucas/anaconda3/envs/gym/lib/python3.7/site-packages/tensorflow/python/ops/clip_ops.py:157: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+2019-08-27 22:14:44,857:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:146: The name tf.trainable_variables is deprecated. Please use tf.compat.v1.trainable_variables instead.
+
+2019-08-27 22:14:44,858:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:152: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+2019-08-27 22:14:44,877:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/q2_linear.py:234: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+2019-08-27 22:14:44,950:WARNING: From /home/lucas/anaconda3/envs/gym/lib/python3.7/site-packages/tensorflow/python/ops/clip_ops.py:286: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use tf.where in 2.0, which has the same broadcast rule as np.where
-2019-08-24 22:57:33,778:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:100: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+2019-08-27 22:14:45,001:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:100: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
 
-2019-08-24 22:57:33,806:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:121: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+2019-08-27 22:14:45,034:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:132: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
 
-2019-08-24 22:57:33,814:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:132: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+2019-08-27 22:14:45,052:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:147: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
 
-2019-08-24 22:57:33,829:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:147: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+2019-08-27 22:14:45,053:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:148: The name tf.summary.FileWriter is deprecated. Please use tf.compat.v1.summary.FileWriter instead.
 
-2019-08-24 22:57:33,831:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:148: The name tf.summary.FileWriter is deprecated. Please use tf.compat.v1.summary.FileWriter instead.
+2019-08-27 22:14:45,194:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:113: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
 
-2019-08-24 22:57:33,868:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:106: The name tf.global_variables_initializer is deprecated. Please use tf.compat.v1.global_variables_initializer instead.
-
-2019-08-24 22:57:33,960:WARNING: From /mnt/sda3/Users/Lucas/studies/ia/rl/stanford_cs234/repo/assignment2/core/deep_q_learning.py:113: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
-
-2019-08-24 22:57:33,984:INFO: Evaluating...
-2019-08-24 22:57:34,064:INFO: Average reward: -0.80 +/- 0.00
-2019-08-24 22:57:35,212:INFO: Evaluating...
-2019-08-24 22:57:35,258:INFO: Average reward: 4.00 +/- 0.00
-2019-08-24 22:57:36,264:INFO: Evaluating...
-2019-08-24 22:57:36,299:INFO: Average reward: 3.80 +/- 0.00
-2019-08-24 22:57:37,320:INFO: Evaluating...
-2019-08-24 22:57:37,370:INFO: Average reward: 3.90 +/- 0.00
-2019-08-24 22:57:38,386:INFO: Evaluating...
-2019-08-24 22:57:38,422:INFO: Average reward: 4.10 +/- 0.00
-2019-08-24 22:57:39,635:INFO: Evaluating...
-2019-08-24 22:57:39,667:INFO: Average reward: 4.10 +/- 0.00
-2019-08-24 22:57:40,653:INFO: Evaluating...
-2019-08-24 22:57:40,695:INFO: Average reward: 4.10 +/- 0.00
-2019-08-24 22:57:41,670:INFO: Evaluating...
-2019-08-24 22:57:41,705:INFO: Average reward: 3.80 +/- 0.00
-2019-08-24 22:57:42,687:INFO: Evaluating...
-2019-08-24 22:57:42,729:INFO: Average reward: 4.10 +/- 0.00
-2019-08-24 22:57:43,714:INFO: Evaluating...
-2019-08-24 22:57:43,750:INFO: Average reward: 4.10 +/- 0.00
-2019-08-24 22:57:44,702:INFO: - Training done.
-2019-08-24 22:57:44,729:INFO: Evaluating...
-2019-08-24 22:57:44,764:INFO: Average reward: 4.10 +/- 0.00
+2019-08-27 22:14:45,212:INFO: Evaluating...
+2019-08-27 22:14:45,313:INFO: Average reward: -0.80 +/- 0.00
+2019-08-27 22:14:46,482:INFO: Evaluating...
+2019-08-27 22:14:46,538:INFO: Average reward: 3.90 +/- 0.00
+2019-08-27 22:14:47,591:INFO: Evaluating...
+2019-08-27 22:14:47,651:INFO: Average reward: 3.80 +/- 0.00
+2019-08-27 22:14:48,653:INFO: Evaluating...
+2019-08-27 22:14:48,695:INFO: Average reward: 4.10 +/- 0.00
+2019-08-27 22:14:49,688:INFO: Evaluating...
+2019-08-27 22:14:49,753:INFO: Average reward: 4.10 +/- 0.00
+2019-08-27 22:14:50,783:INFO: Evaluating...
+2019-08-27 22:14:50,838:INFO: Average reward: 3.80 +/- 0.00
+2019-08-27 22:14:51,819:INFO: Evaluating...
+2019-08-27 22:14:51,875:INFO: Average reward: 4.10 +/- 0.00
+2019-08-27 22:14:52,850:INFO: Evaluating...
+2019-08-27 22:14:52,900:INFO: Average reward: 4.10 +/- 0.00
+2019-08-27 22:14:53,867:INFO: Evaluating...
+2019-08-27 22:14:53,912:INFO: Average reward: 4.10 +/- 0.00
+2019-08-27 22:14:54,873:INFO: Evaluating...
+2019-08-27 22:14:54,913:INFO: Average reward: 3.80 +/- 0.00
+2019-08-27 22:14:55,897:INFO: - Training done.
+2019-08-27 22:14:55,932:INFO: Evaluating...
+2019-08-27 22:14:55,977:INFO: Average reward: 4.10 +/- 0.00

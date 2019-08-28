@@ -105,3 +105,6 @@ venv.bak/
 
 # vscode
 .vscode
+
+# large tfevent files
+assignment2/results/*/events.out.tfevents.*
