@@ -8,7 +8,7 @@ class config():
     high             = 255.
 
     # output config
-    output_path  = "results/q4_train_atari_linear/"
+    output_path  = "results/q4_train_atari_linear_ddqn/"
     model_output = output_path + "model.weights/"
     log_path     = output_path + "log.txt"
     plot_output  = output_path + "scores.png"
@@ -23,6 +23,7 @@ class config():
     eval_freq         = 250000
     record_freq       = 250000
     soft_epsilon      = 0.05
+    double_q          = True
 
     # nature paper hyper params
     nsteps_train       = 500000

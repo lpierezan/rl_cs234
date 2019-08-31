@@ -8,7 +8,7 @@ class config():
     high             = 255.
 
     # output config
-    output_path  = "results/q5_train_atari_nature/"
+    output_path  = "results/q5_train_atari_nature_ddqn/"
     model_output = output_path + "model.weights/"
     log_path     = output_path + "log.txt"
     plot_output  = output_path + "scores.png"
@@ -23,6 +23,7 @@ class config():
     eval_freq         = 250000
     record_freq       = 250000
     soft_epsilon      = 0.05
+    double_q          = True
     
     # my flag to control whether to use original code
     # or modified with respect to schedule update

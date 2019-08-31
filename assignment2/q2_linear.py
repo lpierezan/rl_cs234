@@ -52,12 +52,12 @@ class Linear(DQN):
         bs = None
         state_tensor_shape = [bs, *state_shape]
         state_tensor_shape[-1] *= self.config.state_history
-        self.s = tf.placeholder(tf.uint8, state_tensor_shape)        
-        self.a = tf.placeholder(tf.int32, [bs])
-        self.r = tf.placeholder(tf.float32, [bs])
-        self.sp = tf.placeholder(tf.uint8, state_tensor_shape)
-        self.done_mask = tf.placeholder(tf.bool, [bs])
-        self.lr = tf.placeholder(tf.float32)
+        self.s = tf.placeholder(tf.uint8, state_tensor_shape, name = 's')        
+        self.a = tf.placeholder(tf.int32, [bs], name = 'a')
+        self.r = tf.placeholder(tf.float32, [bs], name = 'r')
+        self.sp = tf.placeholder(tf.uint8, state_tensor_shape, name = 'sp')
+        self.done_mask = tf.placeholder(tf.bool, [bs], name = 'done')
+        self.lr = tf.placeholder(tf.float32, name = 'lr')
 
         ##############################################################
         ######################## END YOUR CODE #######################
@@ -157,13 +157,15 @@ class Linear(DQN):
         ######################## END YOUR CODE #######################
 
 
-    def add_loss_op(self, q, target_q):
+    def add_loss_op(self, q, target_q, q_next):
         """
         Sets the loss of a batch, self.loss is a scalar
 
         Args:
             q: (tf tensor) shape = (batch_size, num_actions)
             target_q: (tf tensor) shape = (batch_size, num_actions)
+            q_next: (tf tensor) shape = (batch_size, num_actions)
+                q-values of the next state actions (used in Double DQN)
         """
         # you may need this variable
         num_actions = self.env.action_space.n
@@ -190,9 +192,17 @@ class Linear(DQN):
         ##############################################################
         ##################### YOUR CODE HERE - 4-5 lines #############
 
-        next_value = tf.reduce_max(target_q, axis = -1) # (batch_size)
-        done_indicator = tf.cast(self.done_mask, tf.float32)
-        td_target = self.r + (1 - done_indicator)*self.config.gamma*next_value
+        not_done = 1 - tf.cast(self.done_mask, tf.float32)
+
+        if self.is_double_q:
+            # action selection using q network
+            best_action = tf.math.argmax(q_next, axis = -1)
+            # action value estimate using target network
+            next_value = tf.reduce_sum(tf.one_hot(best_action, num_actions)*target_q, axis = -1)
+        else:
+            next_value = tf.reduce_max(target_q, axis = -1) # (batch_size)
+        
+        td_target = self.r + not_done * self.config.gamma * next_value
         q_value = tf.reduce_sum(tf.one_hot(self.a, num_actions)*q, axis = -1)
         self.loss = tf.reduce_mean(tf.math.squared_difference(td_target, q_value))
 

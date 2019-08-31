@@ -34,7 +34,7 @@ class DQN(QN):
         raise NotImplementedError
 
 
-    def add_loss_op(self, q, target_q):
+    def add_loss_op(self, q, target_q, q_next):
         """
         Set (Q_target - Q)^2
         """
@@ -77,15 +77,21 @@ class DQN(QN):
         s = self.process_state(self.s)
         self.q = self.get_q_values_op(s, scope="q", reuse=False)
 
-        # compute Q values of next state
+        # compute Q values of next state (target network)
         sp = self.process_state(self.sp)
         self.target_q = self.get_q_values_op(sp, scope="target_q", reuse=False)
+
+        # if Double DQN compute Q values of the next state (q network)
+        if self.is_double_q:
+            self.q_next = self.get_q_values_op(sp, scope="q", reuse=True)
+        else:
+            self.q_next = None
 
         # add update operator for target network
         self.add_update_target_op("q", "target_q")
 
         # add square loss
-        self.add_loss_op(self.q, self.target_q)
+        self.add_loss_op(self.q, self.target_q, self.q_next)
 
         # add optmizer for the main networks
         self.add_optimizer_op("q")

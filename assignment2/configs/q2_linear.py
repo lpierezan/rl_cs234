@@ -7,7 +7,7 @@ class config():
     high             = 255.
 
     # output config
-    output_path  = "results/q2_linear/"
+    output_path  = "results/q2_linear_ddqn/"
     model_output = output_path + "model.weights/"
     log_path     = output_path + "log.txt"
     plot_output  = output_path + "scores.png"
@@ -20,6 +20,7 @@ class config():
     log_freq          = 50
     eval_freq         = 1000
     soft_epsilon      = 0
+    double_q          = True
 
     # hyper params
     nsteps_train       = 10000

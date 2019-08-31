@@ -40,6 +40,9 @@ class QN(object):
             self.logger = get_logger(config.log_path)
         self.env = env
 
+        # double q learning conf
+        self.is_double_q = getattr(self.config, 'double_q', False)
+
         # build model
         self.build()
 
