@@ -25,9 +25,6 @@ class QN(object):
             config: class with hyperparameters
             logger: logger instance from logging module
         """
-        # my flag to control whether to use original code
-        # or modified with respect to schedule update
-        self.original_schedule = False
 
         # directory for training outputs
         if not os.path.exists(config.output_path):
@@ -42,6 +39,10 @@ class QN(object):
 
         # double q learning conf
         self.is_double_q = getattr(self.config, 'double_q', False)
+
+        # my flag to control whether to use original code
+        # or modified with respect to schedule update
+        self.original_schedule = getattr(self.config, 'original_schedule', True)
 
         # build model
         self.build()
