@@ -63,9 +63,9 @@ class NatureQN(Linear):
                 c1,c2,c3,d1 = self.config.layers_sizes
             self.logger.info('layers sizes: {}'.format((c1,c2,c3,d1)))
 
-            out = tf.layers.conv2d(out, c1, 8, 4, activation = 'relu')
-            out = tf.layers.conv2d(out, c2, 4, 2, activation = 'relu')
-            out = tf.layers.conv2d(out, c3, 3, 1, activation = 'relu')
+            out = tf.layers.conv2d(out, c1, 8, 4, padding = 'same', activation = 'relu')
+            out = tf.layers.conv2d(out, c2, 4, 2, padding = 'same', activation = 'relu')
+            out = tf.layers.conv2d(out, c3, 3, 1, padding = 'same', activation = 'relu')
             out = tf.layers.flatten(out)
             out = tf.layers.dense(out, d1, activation = 'relu')
             out = tf.layers.dense(out, num_actions)
