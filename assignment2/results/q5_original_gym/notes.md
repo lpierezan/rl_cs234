@@ -1,3 +1,0 @@
-- Using tf 1.14.0
-- Using gym 0.10.9 (original)
-- Using learning rate and eplsion schedule correlated with log_freq (original code)
