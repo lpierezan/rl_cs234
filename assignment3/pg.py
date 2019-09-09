@@ -54,7 +54,12 @@ def build_mlp(
   """
   #######################################################
   #########   YOUR CODE HERE - 7-20 lines.   ############
-  return # TODO
+  output = mlp_input
+  with tf.variable_scope(scope):
+    for i in range(n_layers):
+      output = tf.layers.dense(output, size, 'relu')
+    output = tf.layers.dense(output, output_size, output_activation)
+  return output
   #######################################################
   #########          END YOUR CODE.          ############
 
@@ -111,14 +116,16 @@ class PG(object):
     """
     #######################################################
     #########   YOUR CODE HERE - 8-12 lines.   ############
-    self.observation_placeholder = # TODO
+    self.observation_placeholder = tf.placeholder(tf.float32, 
+                  [None, self.observation_dim], 'observation')
+
     if self.discrete:
-      self.action_placeholder = # TODO
+      self.action_placeholder = tf.placeholder(tf.int32,[None], 'action')
     else:
-      self.action_placeholder = # TODO
+      self.action_placeholder = tf.placeholder(tf.float32, [None, self.action_dim], 'action')
 
     # Define a placeholder for advantages
-    self.advantage_placeholder = # TODO
+    self.advantage_placeholder = tf.placeholder(tf.float32, [None], 'advantage')
     #######################################################
     #########          END YOUR CODE.          ############
 
@@ -171,16 +178,28 @@ class PG(object):
     """
     #######################################################
     #########   YOUR CODE HERE - 5-10 lines.   ############
-
+    n_layers = self.config.n_layers
+    layer_size = self.config.layer_size
     if self.discrete:
-      action_logits =         # TODO
-      self.sampled_action =   # TODO
-      self.logprob =          # TODO
+      action_logits =         build_mlp(self.observation_placeholder, self.action_dim, 
+                                        scope, n_layers, layer_size)
+      with tf.variable_scope(scope):
+        self.sampled_action =   tf.random.categorical(action_logits, 1, tf.int32, name = 'action_sample')
+        self.sampled_action =   tf.squeeze(self.sampled_action, axis = -1, name = 'squeeze')
+        # sampled_action : shape (batch_size)
+        self.logprob =          -1 * tf.nn.sparse_softmax_cross_entropy_with_logits(
+                                            labels = self.action_placeholder, 
+                                            logits = action_logits, name = 'logprob')
     else:
-      action_means =          # TODO
-      log_std =               # TODO
-      self.sampled_action =   # TODO
-      self.logprob =          # TODO
+      action_means =          build_mlp(self.observation_placeholder, self.action_dim, 
+                                        scope, n_layers, layer_size)
+      with tf.variable_scope(scope):
+        log_std =               tf.get_variable('log_std', shape = [], dtype=tf.float32, 
+                                                  trainable=True, initializer=None)
+
+        raise NotImplementedError()
+        # self.sampled_action =  #  TODO
+        # self.logprob =         # TODO
     #######################################################
     #########          END YOUR CODE.          ############
 
@@ -201,7 +220,8 @@ class PG(object):
 
     ######################################################
     #########   YOUR CODE HERE - 1-2 lines.   ############
-    self.loss = # TODO
+    self.loss = -1 * self.logprob * self.advantage_placeholder
+    self.loss = tf.math.reduce_mean(self.loss, name = 'mean_loss')
     #######################################################
     #########          END YOUR CODE.          ############
 
@@ -212,7 +232,8 @@ class PG(object):
     """
     ######################################################
     #########   YOUR CODE HERE - 1-2 lines.   ############
-    self.train_op = # TODO
+    optimizer = tf.train.AdamOptimizer(learning_rate=self.lr, name = 'adam_policy')
+    self.train_op = optimizer.minimize(self.loss, var_list = None)
     #######################################################
     #########          END YOUR CODE.          ############
 
@@ -241,9 +262,17 @@ class PG(object):
     """
     ######################################################
     #########   YOUR CODE HERE - 4-8 lines.   ############
-    self.baseline = # TODO
-    self.baseline_target_placeholder = # TODO
-    self.update_baseline_op = # TODO
+    n_layers = self.config.n_layers
+    layer_size = self.config.layer_size
+    self.baseline = build_mlp(self.observation_placeholder, 1, 
+                                        scope, n_layers, layer_size)
+    self.baseline = tf.squeeze(self.baseline, axis = -1) # shape (batch_size)
+    self.baseline_target_placeholder = tf.placeholder(tf.float32, [None], 'baseline_target')
+    self.baseline_loss = tf.losses.mean_squared_error(self.baseline_target_placeholder, self.baseline, 
+                                  scope = scope, reduction = tf.losses.Reduction.SUM_OVER_BATCH_SIZE)
+
+    opt = tf.train.AdamOptimizer(learning_rate = self.lr, name = 'adam_baseline')
+    self.update_baseline_op = opt.minimize(self.baseline_loss, var_list = tf.trainable_variables(scope))
     #######################################################
     #########          END YOUR CODE.          ############
 
@@ -432,8 +461,13 @@ class PG(object):
     for path in paths:
       rewards = path["reward"]
       #######################################################
-      #########   YOUR CODE HERE - 5-10 lines.   ############
-      returns = # TODO
+      #########   YOUR CODE HERE - 5-10 lines.   ############      
+      n = len(rewards)
+      returns = np.zeros(n)
+      Gt = 0
+      for i in range(n):
+        Gt = rewards[n-1-i] + self.config.gamma * Gt
+        returns[n-1-i] = Gt
       #######################################################
       #########          END YOUR CODE.          ############
       all_returns.append(returns)
@@ -472,9 +506,14 @@ class PG(object):
     #######################################################
     #########   YOUR CODE HERE - 5-10 lines.   ############
     if self.config.use_baseline:
-      # TODO
+      # baseline: ndarray , shape (batch_size)
+      baseline = self.sess.run(self.baseline, feed_dict = {self.observation_placeholder : observations})
+      assert adv.shape == baseline.shape
+      assert adv.ndim == 1
+      adv = returns - baseline
     if self.config.normalize_advantage:
-      # TODO
+      adv = adv - np.mean(adv)
+      adv = adv / np.std(adv)
     #######################################################
     #########          END YOUR CODE.          ############
     return adv
@@ -492,7 +531,10 @@ class PG(object):
     """
     #######################################################
     #########   YOUR CODE HERE - 1-5 lines.   ############
-    pass # TODO
+    self.sess.run(self.update_baseline_op, feed_dict = {
+      self.observation_placeholder : observations,
+      self.baseline_target_placeholder : returns
+    })
     #######################################################
     #########          END YOUR CODE.          ############
 
