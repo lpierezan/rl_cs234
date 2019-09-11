@@ -183,23 +183,23 @@ class PG(object):
     if self.discrete:
       action_logits =         build_mlp(self.observation_placeholder, self.action_dim, 
                                         scope, n_layers, layer_size)
-      with tf.variable_scope(scope):
-        self.sampled_action =   tf.random.categorical(action_logits, 1, tf.int32, name = 'action_sample')
-        self.sampled_action =   tf.squeeze(self.sampled_action, axis = -1, name = 'squeeze')
-        # sampled_action : shape (batch_size)
-        self.logprob =          -1 * tf.nn.sparse_softmax_cross_entropy_with_logits(
-                                            labels = self.action_placeholder, 
-                                            logits = action_logits, name = 'logprob')
+      
+      self.sampled_action =   tf.random.categorical(action_logits, 1, tf.int32, name = 'action_sample')
+      self.sampled_action =   tf.squeeze(self.sampled_action, axis = -1, name = 'squeeze')
+      # sampled_action : shape (batch_size)
+      self.logprob =          -1 * tf.nn.sparse_softmax_cross_entropy_with_logits(
+                                          labels = self.action_placeholder, 
+                                          logits = action_logits, name = 'logprob')
     else:
       action_means =          build_mlp(self.observation_placeholder, self.action_dim, 
                                         scope, n_layers, layer_size)
-      with tf.variable_scope(scope):
-        log_std =               tf.get_variable('log_std', shape = [], dtype=tf.float32, 
-                                                  trainable=True, initializer=None)
+      
+      log_std =               tf.get_variable('log_std', shape = [], dtype=tf.float32, 
+                                                trainable=True, initializer=None)
 
-        raise NotImplementedError()
-        # self.sampled_action =  #  TODO
-        # self.logprob =         # TODO
+      raise NotImplementedError()
+      # self.sampled_action =  #  TODO
+      # self.logprob =         # TODO
     #######################################################
     #########          END YOUR CODE.          ############
 
@@ -583,6 +583,7 @@ class PG(object):
       msg = "Average reward: {:04.2f} +/- {:04.2f}".format(avg_reward, sigma_reward)
       self.logger.info(msg)
 
+      # BUG should be t - last_record
       if  self.config.record and (last_record > self.config.record_freq):
         self.logger.info("Recording...")
         last_record =0
