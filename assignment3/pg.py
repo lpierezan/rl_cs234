@@ -7,6 +7,7 @@ import logging
 import time
 import numpy as np
 import tensorflow as tf
+import tensorflow_probability as tfp
 import gym
 import scipy.signal
 import os
@@ -17,7 +18,7 @@ from config import get_config
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--env_name', required=True, type=str,
-                    choices=['cartpole', 'pendulum', 'cheetah'])
+                    choices=['cartpole', 'pendulum', 'cheetah', 'pendulumGym'])
 parser.add_argument('--baseline', dest='use_baseline', action='store_true')
 parser.add_argument('--no-baseline', dest='use_baseline', action='store_false')
 parser.set_defaults(use_baseline=True)
@@ -194,12 +195,15 @@ class PG(object):
       action_means =          build_mlp(self.observation_placeholder, self.action_dim, 
                                         scope, n_layers, layer_size)
       
-      log_std =               tf.get_variable('log_std', shape = [], dtype=tf.float32, 
-                                                trainable=True, initializer=None)
+      log_std =               tf.get_variable('log_std', shape = [self.action_dim], 
+                                    dtype=tf.float32, trainable=True, initializer=None)
 
-      raise NotImplementedError()
-      # self.sampled_action =  #  TODO
-      # self.logprob =         # TODO
+      std = tf.exp(log_std)
+
+      #(bath_size, action_dim)
+      mvn = tfp.distributions.MultivariateNormalDiag(loc = action_means, scale_diag = std)
+      self.sampled_action =  mvn.sample()
+      self.logprob = mvn.log_prob(self.action_placeholder)
     #######################################################
     #########          END YOUR CODE.          ############
 
