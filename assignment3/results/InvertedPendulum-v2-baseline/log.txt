@@ -1,0 +1,131 @@
+2019-09-13 21:38:31,700:WARNING: From pg.py:120: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2019-09-13 21:38:31,718:WARNING: From pg.py:59: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+2019-09-13 21:38:31,719:WARNING: From pg.py:61: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+2019-09-13 21:38:31,723:WARNING: From /home/lucas/anaconda3/envs/gym/lib/python3.7/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+2019-09-13 21:38:32,049:WARNING: From pg.py:198: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+2019-09-13 21:38:32,127:WARNING: From pg.py:239: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+2019-09-13 21:38:32,331:WARNING: From pg.py:275: The name tf.losses.mean_squared_error is deprecated. Please use tf.compat.v1.losses.mean_squared_error instead.
+
+2019-09-13 21:38:32,332:WARNING: From pg.py:276: The name tf.losses.Reduction is deprecated. Please use tf.compat.v1.losses.Reduction instead.
+
+2019-09-13 21:38:32,342:WARNING: From pg.py:279: The name tf.trainable_variables is deprecated. Please use tf.compat.v1.trainable_variables instead.
+
+2019-09-13 21:38:32,438:WARNING: From pg.py:312: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2019-09-13 21:38:32,448:WARNING: From pg.py:333: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+2019-09-13 21:38:32,457:WARNING: From pg.py:339: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+2019-09-13 21:38:32,459:WARNING: From pg.py:340: The name tf.summary.FileWriter is deprecated. Please use tf.compat.v1.summary.FileWriter instead.
+
+2019-09-13 21:38:33,054:INFO: Average reward: 3.00 +/- 0.00
+2019-09-13 21:38:33,918:INFO: Average reward: 5.17 +/- 0.21
+2019-09-13 21:38:34,305:INFO: Average reward: 5.76 +/- 0.25
+2019-09-13 21:38:34,679:INFO: Average reward: 6.89 +/- 0.37
+2019-09-13 21:38:35,083:INFO: Average reward: 9.03 +/- 0.62
+2019-09-13 21:38:35,872:INFO: Average reward: 11.34 +/- 0.87
+2019-09-13 21:38:36,771:INFO: Average reward: 16.64 +/- 1.84
+2019-09-13 21:38:37,197:INFO: Average reward: 20.42 +/- 1.95
+2019-09-13 21:38:37,543:INFO: Average reward: 23.74 +/- 2.35
+2019-09-13 21:38:37,907:INFO: Average reward: 26.05 +/- 2.67
+2019-09-13 21:38:38,254:INFO: Average reward: 27.82 +/- 2.27
+2019-09-13 21:38:38,676:INFO: Average reward: 38.52 +/- 4.54
+2019-09-13 21:38:39,229:INFO: Average reward: 35.04 +/- 2.58
+2019-09-13 21:38:39,676:INFO: Average reward: 34.93 +/- 3.62
+2019-09-13 21:38:40,048:INFO: Average reward: 38.42 +/- 3.39
+2019-09-13 21:38:40,394:INFO: Average reward: 39.64 +/- 3.35
+2019-09-13 21:38:40,802:INFO: Average reward: 39.12 +/- 3.30
+2019-09-13 21:38:41,491:INFO: Average reward: 37.77 +/- 2.75
+2019-09-13 21:38:42,020:INFO: Average reward: 42.39 +/- 4.15
+2019-09-13 21:38:42,454:INFO: Average reward: 48.65 +/- 5.50
+2019-09-13 21:38:42,897:INFO: Average reward: 48.60 +/- 4.82
+2019-09-13 21:38:43,273:INFO: Average reward: 48.40 +/- 4.15
+2019-09-13 21:38:43,680:INFO: Average reward: 56.53 +/- 6.57
+2019-09-13 21:38:44,036:INFO: Average reward: 88.09 +/- 18.88
+2019-09-13 21:38:44,657:INFO: Average reward: 69.36 +/- 6.58
+2019-09-13 21:38:45,191:INFO: Average reward: 78.73 +/- 13.09
+2019-09-13 21:38:45,589:INFO: Average reward: 82.82 +/- 13.49
+2019-09-13 21:38:46,018:INFO: Average reward: 90.64 +/- 20.14
+2019-09-13 21:38:46,482:INFO: Average reward: 129.86 +/- 28.15
+2019-09-13 21:38:46,987:INFO: Average reward: 145.33 +/- 18.12
+2019-09-13 21:38:47,355:INFO: Average reward: 136.00 +/- 23.18
+2019-09-13 21:38:47,946:INFO: Average reward: 459.00 +/- 118.79
+2019-09-13 21:38:48,417:INFO: Average reward: 409.50 +/- 6.01
+2019-09-13 21:38:48,790:INFO: Average reward: 104.00 +/- 0.00
+2019-09-13 21:38:49,151:INFO: Average reward: 259.50 +/- 114.20
+2019-09-13 21:38:49,531:INFO: Average reward: 196.75 +/- 61.44
+2019-09-13 21:38:49,899:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:50,448:INFO: Average reward: 732.00 +/- 0.00
+2019-09-13 21:38:50,853:INFO: Average reward: 336.50 +/- 209.66
+2019-09-13 21:38:51,265:INFO: Average reward: 487.00 +/- 0.00
+2019-09-13 21:38:51,615:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:51,978:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:52,352:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:53,134:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:53,594:INFO: Average reward: 364.00 +/- 72.83
+2019-09-13 21:38:54,020:INFO: Average reward: 633.00 +/- 0.00
+2019-09-13 21:38:54,385:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:54,832:INFO: Average reward: 597.00 +/- 0.00
+2019-09-13 21:38:55,230:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:55,623:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:55,996:INFO: Average reward: 978.00 +/- 0.00
+2019-09-13 21:38:56,380:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:56,740:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:57,095:INFO: Average reward: 878.00 +/- 0.00
+2019-09-13 21:38:57,458:INFO: Average reward: 96.00 +/- 0.00
+2019-09-13 21:38:57,812:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:58,177:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:58,539:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:58,932:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:59,296:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:38:59,680:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:00,044:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:00,445:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:00,812:INFO: Average reward: 243.67 +/- 30.93
+2019-09-13 21:39:01,429:INFO: Average reward: 153.17 +/- 15.73
+2019-09-13 21:39:01,791:INFO: Average reward: 94.00 +/- 8.67
+2019-09-13 21:39:02,150:INFO: Average reward: 63.87 +/- 4.85
+2019-09-13 21:39:02,535:INFO: Average reward: 62.60 +/- 3.49
+2019-09-13 21:39:02,966:INFO: Average reward: 58.53 +/- 2.49
+2019-09-13 21:39:03,333:INFO: Average reward: 62.50 +/- 3.54
+2019-09-13 21:39:03,690:INFO: Average reward: 75.15 +/- 4.04
+2019-09-13 21:39:04,136:INFO: Average reward: 103.11 +/- 8.34
+2019-09-13 21:39:04,498:INFO: Average reward: 235.75 +/- 19.74
+2019-09-13 21:39:04,861:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:05,208:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:05,572:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:05,991:INFO: Average reward: 259.00 +/- 0.00
+2019-09-13 21:39:06,383:INFO: Average reward: 222.67 +/- 23.27
+2019-09-13 21:39:06,780:INFO: Average reward: 258.33 +/- 121.15
+2019-09-13 21:39:07,139:INFO: Average reward: 157.33 +/- 21.82
+2019-09-13 21:39:07,492:INFO: Average reward: 166.80 +/- 47.18
+2019-09-13 21:39:07,923:INFO: Average reward: 185.60 +/- 55.10
+2019-09-13 21:39:08,335:INFO: Average reward: 481.00 +/- 291.33
+2019-09-13 21:39:08,687:INFO: Average reward: 403.50 +/- 189.15
+2019-09-13 21:39:09,034:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:09,388:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:09,840:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:10,202:INFO: Average reward: 598.00 +/- 0.00
+2019-09-13 21:39:10,558:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:10,914:INFO: Average reward: 683.00 +/- 0.00
+2019-09-13 21:39:11,304:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:11,673:INFO: Average reward: 305.33 +/- 196.50
+2019-09-13 21:39:12,182:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:12,657:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:13,055:INFO: Average reward: 219.00 +/- 57.98
+2019-09-13 21:39:13,410:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:13,771:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:14,218:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:14,614:INFO: Average reward: 325.00 +/- 78.11
+2019-09-13 21:39:15,010:INFO: Average reward: 940.00 +/- 0.00
+2019-09-13 21:39:15,367:INFO: Average reward: 1000.00 +/- 0.00
+2019-09-13 21:39:15,367:INFO: - Training done.
+2019-09-13 21:39:31,498:INFO: Average reward: 1000.00 +/- 0.00
