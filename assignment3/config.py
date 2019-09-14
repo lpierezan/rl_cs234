@@ -120,10 +120,10 @@ class config_pendulumGym:
         self.summary_freq = 1
 
         # model and training config
-        self.num_batches            = 100 # number of batches trained on
-        self.batch_size             = 5000 # number of steps used to compute each policy update
-        self.max_ep_len             = 1000 # maximum episode length
-        self.learning_rate          = 0.05
+        self.num_batches            = 2*60*5 # number of batches trained on
+        self.batch_size             = 50000 # number of steps used to compute each policy update
+        self.max_ep_len             = 5000 # maximum episode length
+        self.learning_rate          = 0.01
         self.gamma                  = 0.9 # the discount factor
         self.use_baseline           = use_baseline
         self.normalize_advantage    = True 
